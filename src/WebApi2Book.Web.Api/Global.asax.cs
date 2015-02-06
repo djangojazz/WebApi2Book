@@ -16,7 +16,7 @@ namespace WebApi2Book.Web.Api
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
 
-        protected void Applicatoin_Error()
+        protected void Application_Error()
         {
             var exception = Server.GetLastError();
             if (exception != null)
