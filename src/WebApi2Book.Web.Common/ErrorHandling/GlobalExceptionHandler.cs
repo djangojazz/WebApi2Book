@@ -18,6 +18,7 @@ namespace WebApi2Book.Web.Common.ErrorHandling
                     (HttpStatusCode)httpException.GetHttpCode(), httpException.Message);
                 return;
                 
+
             }
 
             if (exception is RootObjectNotFoundException)
