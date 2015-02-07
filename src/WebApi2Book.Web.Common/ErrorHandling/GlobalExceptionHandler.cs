@@ -17,8 +17,6 @@ namespace WebApi2Book.Web.Common.ErrorHandling
                 context.Result = new SimpleErrorResult(context.Request,
                     (HttpStatusCode)httpException.GetHttpCode(), httpException.Message);
                 return;
-                
-
             }
 
             if (exception is RootObjectNotFoundException)
@@ -33,7 +31,6 @@ namespace WebApi2Book.Web.Common.ErrorHandling
                 return;
             }
 
-         
             context.Result = new SimpleErrorResult(context.Request, HttpStatusCode.InternalServerError,
                 exception.Message);
         }
