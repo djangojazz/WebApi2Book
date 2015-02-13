@@ -2,7 +2,7 @@
 
 namespace WebApi2Book.Web.Api.Models
 {
-    public class NewTask2
+    public class NewTaskV2
     {
         public string Subject { get; set; }
         public DateTime? StartDate { get; set; }

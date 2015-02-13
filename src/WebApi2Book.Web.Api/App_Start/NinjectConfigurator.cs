@@ -4,6 +4,7 @@ using NHibernate;
 using NHibernate.Context;
 using Ninject.Activation;
 using Ninject.Web.Common;
+using WebApi2Book.Common.TypeMapping;
 using WebApi2Book.Data.QueryProcessors;
 using WebApi2Book.Data.SqlServer.Mapping;
 using log4net.Config;
@@ -29,6 +30,7 @@ namespace WebApi2Book.Web.Api
             ConfigureLog4net(container);
             ConfigureUserSession(container);
             ConfigureNHibernate(container);
+            ConfigureAutoMapper(container);
 
             container.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
             container.Bind<IAddTaskQueryProcessor>().To<AddTaskQueryProcessor>().InRequestScope();
@@ -72,6 +74,11 @@ namespace WebApi2Book.Web.Api
             var userSession = new UserSession();
             container.Bind<IUserSession>().ToConstant(userSession).InSingletonScope();
             container.Bind<IWebUserSession>().ToConstant(userSession).InSingletonScope();
+        }
+
+        private void ConfigureAutoMapper(IKernel container)
+        {
+            container.Bind<IAutoMapper>().To<AutoMapperAdapter>().InSingletonScope();
         }
     }
 }
