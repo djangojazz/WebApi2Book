@@ -8,8 +8,10 @@ using WebApi2Book.Data.SqlServer.Mapping;
 using log4net.Config;
 using Ninject;
 using WebApi2Book.Common;
+using WebApi2Book.Common.Security;
 using WebApi2Book.Common.Logging;
 using WebApi2Book.Web.Common;
+using WebApi2Book.Web.Common.Security;
 
 namespace WebApi2Book.Web.Api
 {
@@ -23,6 +25,7 @@ namespace WebApi2Book.Web.Api
         private void AddBindings(IKernel container)
         {
             ConfigureLog4net(container);
+            ConfigureUserSession(container);
             ConfigureNHibernate(container);
 
             container.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
@@ -59,6 +62,13 @@ namespace WebApi2Book.Web.Api
             }
 
             return sessionFactory.GetCurrentSession();
+        }
+
+        private void ConfigureUserSession(IKernel container)
+        {
+            var userSession = new UserSession();
+            container.Bind<IUserSession>().ToConstant(userSession).InSingletonScope();
+            container.Bind<IWebUserSession>().ToConstant(userSession).InSingletonScope();
         }
     }
 }
