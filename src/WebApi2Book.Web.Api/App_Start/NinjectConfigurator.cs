@@ -13,6 +13,7 @@ using WebApi2Book.Common;
 using WebApi2Book.Common.Security;
 using WebApi2Book.Common.Logging;
 using WebApi2Book.Data.SqlServer.QueryProcessors;
+using WebApi2Book.Web.Api.AutoMappingConfiguration;
 using WebApi2Book.Web.Common;
 using WebApi2Book.Web.Common.Security;
 
@@ -79,6 +80,25 @@ namespace WebApi2Book.Web.Api
         private void ConfigureAutoMapper(IKernel container)
         {
             container.Bind<IAutoMapper>().To<AutoMapperAdapter>().InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<StatusEntityToStatusAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<StatusToStatusEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<UserEntityToUserAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<UserToUserEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<NewTaskToTaskEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<TaskEntityToTaskAutoMapperTypeConfigurator>()
+                .InSingletonScope();
         }
     }
 }

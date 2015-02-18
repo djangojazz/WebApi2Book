@@ -4,7 +4,7 @@ using WebApi2Book.Web.Api.Models;
 
 namespace WebApi2Book.Web.Api.AutoMappingConfiguration
 {
-    public class NewTaskVToTaskEntityAutoMapperTypeConfigurator : IAutoMapperTypeConfigurator
+    public class NewTaskToTaskEntityAutoMapperTypeConfigurator : IAutoMapperTypeConfigurator
     {
         public void Configure()
         {
