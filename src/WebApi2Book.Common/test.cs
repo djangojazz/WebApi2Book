@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WebApi2Book.Common
 {
     class test
-        //her
     {
+        // Here I am again
     }
 }
