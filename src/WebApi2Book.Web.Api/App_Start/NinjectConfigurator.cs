@@ -14,6 +14,8 @@ using WebApi2Book.Common.Security;
 using WebApi2Book.Common.Logging;
 using WebApi2Book.Data.SqlServer.QueryProcessors;
 using WebApi2Book.Web.Api.AutoMappingConfiguration;
+using WebApi2Book.Web.Api.MaintenanceProcessing;
+using WebApi2Book.Web.Api.Models;
 using WebApi2Book.Web.Common;
 using WebApi2Book.Web.Common.Security;
 
@@ -35,6 +37,7 @@ namespace WebApi2Book.Web.Api
 
             container.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
             container.Bind<IAddTaskQueryProcessor>().To<AddTaskQueryProcessor>().InRequestScope();
+            container.Bind<IAddTaskMaintenanceProcessor>().To<AddTaskMaintenanceProcessor>().InRequestScope();
         }
 
         private void ConfigureLog4net(IKernel container)
