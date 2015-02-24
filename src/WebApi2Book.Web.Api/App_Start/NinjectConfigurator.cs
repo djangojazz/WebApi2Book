@@ -16,6 +16,7 @@ using WebApi2Book.Data.SqlServer.QueryProcessors;
 using WebApi2Book.Web.Api.AutoMappingConfiguration;
 using WebApi2Book.Web.Api.MaintenanceProcessing;
 using WebApi2Book.Web.Api.Models;
+using WebApi2Book.Web.Api.Security;
 using WebApi2Book.Web.Common;
 using WebApi2Book.Web.Common.Security;
 
@@ -59,6 +60,7 @@ namespace WebApi2Book.Web.Api
             container.Bind<ISessionFactory>().ToConstant(sessionFactory);
             container.Bind<ISession>().ToMethod(CreateSession).InRequestScope();
             container.Bind<IActionTransactionHelper>().To<ActionTransactionHelper>().InRequestScope();
+            container.Bind<IBasicSecurityService>().To<BasicSecurityService>().InSingletonScope();
         }
 
         private ISession CreateSession(IContext context)
