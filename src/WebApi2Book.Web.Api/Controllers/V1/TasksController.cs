@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
 using WebApi2Book.Common;
+using WebApi2Book.Data.QueryProcessors;
 using WebApi2Book.Web.Api.InquiryProcessing;
 using WebApi2Book.Web.Api.Models;
 using WebApi2Book.Web.Common;
@@ -16,12 +17,15 @@ namespace WebApi2Book.Web.Api.Controllers.V1
     {
         private readonly IAddTaskMaintenanceProcessor _addTaskMaintenanceProcessor;
         private readonly ITaskByIdInquiryProcessor _taskByIdInquiryProcessor;
+        private readonly IUpdateTaskMaintenanceProcessor _updateTaskMaintenanceProcessor;
 
         public TasksController(IAddTaskMaintenanceProcessor addTaskMaintenanceProcessor,
-            ITaskByIdInquiryProcessor taskByIdInquiryProcessor)
+            ITaskByIdInquiryProcessor taskByIdInquiryProcessor,
+            IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor)
         {
             _addTaskMaintenanceProcessor = addTaskMaintenanceProcessor;
             _taskByIdInquiryProcessor = taskByIdInquiryProcessor;
+            _updateTaskMaintenanceProcessor = updateTaskMaintenanceProcessor;
         }
 
         [Route("", Name = "AddTaskRoute")]
@@ -38,6 +42,16 @@ namespace WebApi2Book.Web.Api.Controllers.V1
         public Task GetTask(long id)
         {
             var task = _taskByIdInquiryProcessor.GetTask(id);
+            return task;
+        }
+
+        [Route("{id:long}", Name = "UpdateTaskRoute")]
+        [HttpPut]
+        [HttpPatch]
+        [Authorize(Roles = Constants.RoleNames.SeniorWorker)]
+        public Task UpdateTask(long id, [FromBody] object updatedTask)
+        {
+            var task = _updateTaskMaintenanceProcessor.UpdateTask(id, updatedTask);
             return task;
         }
     }
