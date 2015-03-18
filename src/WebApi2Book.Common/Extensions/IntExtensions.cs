@@ -20,7 +20,7 @@ namespace WebApi2Book.Common.Extensions
         public static int GetBoundedValue(this int? value, int defaultValue, int min, int max)
         {
             var valToBound = value ?? defaultValue;
-            var boundedValue = GetBoundedValues(valToBound, min, max);
+            var boundedValue = GetBoundedValue(valToBound, min, max);
             return boundedValue;
         }
     }
