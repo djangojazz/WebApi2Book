@@ -44,6 +44,9 @@ namespace WebApi2Book.Web.Api
                     Issuer = reader.Issuer,
                     SigningToken = builder.CreateFromKey(reader.SymmetricKey)
                 });
+
+            GlobalConfiguration.Configuration.MessageHandlers.Add(
+                new PagedTaskDataSecurityMessageHandler(logManager, userSession));
         }
 
         protected void Application_Error()
