@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAddTaskMaintenanceProcessor.cs" />
     <Compile Include="ILinkContaining.cs" />
     <Compile Include="IPageLinkContaining.cs" />
     <Compile Include="Link.cs" />

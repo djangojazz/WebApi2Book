@@ -20,7 +20,7 @@ namespace WebApi2Book.Web.Api
             var constraintsResolver = new DefaultInlineConstraintResolver();
             constraintsResolver.ConstraintMap.Add("apiVersionConstraint", typeof(ApiVersionConstraint));
 
-            ConfigureRouting(config);
+            //ConfigureRouting(config);
 
             config.MapHttpAttributeRoutes(constraintsResolver);
 
