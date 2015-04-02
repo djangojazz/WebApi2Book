@@ -36,6 +36,10 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\..\lib\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\lib\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
     </Reference>
@@ -62,6 +66,7 @@
       <HintPath>..\..\lib\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
@@ -80,12 +85,19 @@
     <Compile Include="Controllers\V1\TasksControllerDependencyBlockMock.cs" />
     <Compile Include="Controllers\V1\TasksControllerTest.cs" />
     <Compile Include="HttpRequestMessageFactory.cs" />
+    <Compile Include="InquiryProcessing\AllTasksInquiryProcessorTest.cs" />
+    <Compile Include="InquiryProcessing\PagedDataRequestFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebApi2Book.Common\WebApi2Book.Common.csproj">
+      <Project>{3636cadc-bff7-461a-b1dc-28e08a2212e5}</Project>
+      <Name>WebApi2Book.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebApi2Book.Data\WebApi2Book.Data.csproj">
       <Project>{285bd594-61ee-4fde-b486-0734859d2b18}</Project>
       <Name>WebApi2Book.Data</Name>

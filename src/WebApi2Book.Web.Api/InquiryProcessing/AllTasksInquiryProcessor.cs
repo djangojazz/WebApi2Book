@@ -53,7 +53,8 @@ namespace WebApi2Book.Web.Api.InquiryProcessing
         {
             inquiryResponse.AddLink(_taskLinkService.GetAllTasksLink());
 
-            _commonLinkService.AddPageLinks(inquiryResponse, GetCurrentPageQueryString(inquiryResponse),
+            _commonLinkService.AddPageLinks(inquiryResponse, 
+                GetCurrentPageQueryString(inquiryResponse),
                 GetPreviousPageQueryString(inquiryResponse),
                 GetNextPageQueryString(inquiryResponse));
         }
