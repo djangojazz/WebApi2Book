@@ -15,18 +15,21 @@ namespace WebApi2Book.Web.Api
     {
         public static void Register(HttpConfiguration config)
         {
+            // http://stackoverflow.com/questions/12976352/asp-net-web-api-model-binding-not-working-with-xml-data-on-post
             config.Formatters.XmlFormatter.UseXmlSerializer = true;
 
-            var constraintsResolver = new DefaultInlineConstraintResolver();
-            constraintsResolver.ConstraintMap.Add("apiVersionConstraint", typeof(ApiVersionConstraint));
+            config.EnableCors();
 
-            //ConfigureRouting(config);
+            ConfigureRouting(config);
 
-            config.MapHttpAttributeRoutes(constraintsResolver);
+            // To disable tracing in your application, please comment out or remove the following line of code
+            // For more information, refer to: http://www.asp.net/web-api
+            config.Services.Replace(typeof(ITraceWriter),
+                new SimpleTraceWriter(WebContainerManager.Get<ILogManager>()));
 
-            config.Services.Replace(typeof(IHttpControllerSelector), new NamespaceHttpControllerSelector(config));
-            config.Services.Replace(typeof(ITraceWriter), new SimpleTraceWriter(WebContainerManager.Get<ILogManager>()));
-            config.Services.Add(typeof(IExceptionLogger), new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
+            config.Services.Add(typeof(IExceptionLogger),
+                new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
+
             config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
         }
 

@@ -30,7 +30,7 @@ namespace WebApi2Book.Web.Api.MaintenanceProcessing
             task.AddLink(new Link
             {
                 Method = HttpMethod.Get.Method,
-                Href = "http://localhost:61589/api/v1/tasks/" + task.TaskId,
+                Href = "http://localhost:49449/api/v1/tasks/" + task.TaskId,
                 Rel = Constants.CommonLinkRelValues.Self
             });
 

@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2Book.Web.Common.Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8EE0A83C-E2E3-4692-A64F-C8AC9DDA63F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2BookSPA", "WebApi2BookSPA\WebApi2BookSPA.csproj", "{7EE6FE89-727D-43E3-9D49-7412F7017EEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{ED33CF58-AD10-47ED-9CCE-7CB8D110EEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED33CF58-AD10-47ED-9CCE-7CB8D110EEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED33CF58-AD10-47ED-9CCE-7CB8D110EEAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE6FE89-727D-43E3-9D49-7412F7017EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE6FE89-727D-43E3-9D49-7412F7017EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE6FE89-727D-43E3-9D49-7412F7017EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE6FE89-727D-43E3-9D49-7412F7017EEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
